@@ -543,14 +543,16 @@ body {
 
 
 .loader-ring {
-  width: 56px;
-  height: 56px;
+  width: 64px;                 /* to hơn một chút */
+  height: 64px;
   border-radius: 50%;
-  border: 3px solid rgba(255,255,255,0.25);
-  border-top-color: #ffffff;
+
+  border: 5px solid rgba(255,255,255,0.35); /* ⭐ dày hơn + nền mờ */
+  border-top-color: #ffffff;               /* ⭐ trắng rõ */
 
   animation: ringSpin 0.9s linear infinite;
 }
+
 
 @keyframes ringSpin {
   to {
