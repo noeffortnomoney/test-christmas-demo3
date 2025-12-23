@@ -732,9 +732,41 @@ const popupOverlay = document.getElementById("popupOverlay");
 const closeBtn = document.getElementById("closeBtn");
 
 const loading = document.getElementById("videoLoading");
+const FAKE_VIDEO_DELAY = 10000; // 10 giây – chỉnh bao nhiêu tùy thích
   
 closeBtn.onclick = closePopup;
 
+// function openPopup(id) {
+//   if (autoCloseTimeout) {
+//     clearTimeout(autoCloseTimeout);
+//     autoCloseTimeout = null;
+//   }
+
+//   // ✅ HIỆN LOADING – main video vẫn chạy
+//   loading.style.display = "flex";
+
+//   const popupVideo = document.getElementById("popupVideo");
+//   const videoSrc = popupVideos[id];
+//   if (!popupVideo || !videoSrc) return;
+
+//   // reset popup video
+//   popupVideo.pause();
+//   popupVideo.removeAttribute("src");
+//   popupVideo.load();
+
+//   popupVideo.src = videoSrc;
+//   popupVideo.currentTime = 0;
+
+//   popupVideo.oncanplay = () => {
+//     loading.style.display = "none";        // ẨN LOADING
+//     popupOverlay.style.display = "flex";   // HIỆN POPUP
+//     popupVideo.play();
+//   };
+
+//   popupVideo.load();
+
+//   autoCloseTimeout = setTimeout(closePopup, 15000);
+// }
 function openPopup(id) {
   if (autoCloseTimeout) {
     clearTimeout(autoCloseTimeout);
@@ -753,18 +785,21 @@ function openPopup(id) {
   popupVideo.removeAttribute("src");
   popupVideo.load();
 
-  popupVideo.src = videoSrc;
-  popupVideo.currentTime = 0;
+  // ⏳ GIẢ LẬP LOAD CHẬM 10s
+  setTimeout(() => {
+    popupVideo.src = videoSrc;
+    popupVideo.currentTime = 0;
 
-  popupVideo.oncanplay = () => {
-    loading.style.display = "none";        // ẨN LOADING
-    popupOverlay.style.display = "flex";   // HIỆN POPUP
-    popupVideo.play();
-  };
+    popupVideo.oncanplay = () => {
+      loading.style.display = "none";        // ẨN LOADING
+      popupOverlay.style.display = "flex";   // HIỆN POPUP
+      popupVideo.play();
+    };
 
-  popupVideo.load();
+    popupVideo.load();
+  }, FAKE_VIDEO_DELAY);
 
-  autoCloseTimeout = setTimeout(closePopup, 15000);
+  autoCloseTimeout = setTimeout(closePopup, 15000 + FAKE_VIDEO_DELAY);
 }
 
 
