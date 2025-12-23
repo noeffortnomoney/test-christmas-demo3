@@ -609,31 +609,7 @@ body {
     opacity: 0.85;
   }
 }
-
-
-.svg-loader {
-  width: 65px;     /* to hơn */
-  height: 65px;
-}
-
-.svg-loader circle {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 6;                 /* ✅ DÀY HƠN */
-  stroke-linecap: round;
-
-  stroke-dasharray: 80 120;
-  animation: svgSpin 1s linear infinite;
-
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.9)); /* ✅ NỔI */
-}
-
-
-@keyframes svgSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+.svg-loader { width: 65px; height: 65px; } .svg-loader circle { fill: none; stroke: #ffffff; /* ✅ trắng */ stroke-width: 6; stroke-linecap: round; stroke-dasharray: 90 150; animation: svgSpin 1.1s linear infinite; transform-origin: 50% 50%; } @keyframes svgSpin { to { transform: rotate(360deg); } }
 
 </style>
 </head>
