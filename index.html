@@ -546,21 +546,41 @@ body {
   color: #ffffff;
   font-size: 18px;
   margin-top: 14px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
 }
 
-/* animation nhấp nhô nhẹ */
-.loading-bounce {
-  animation: textBounce 1.4s ease-in-out infinite;
+/* container */
+.wave-text {
+  display: inline-block;
 }
 
-@keyframes textBounce {
+/* từng chữ */
+.wave-text span {
+  display: inline-block;
+  animation: letterWave 1.4s ease-in-out infinite;
+}
+
+/* delay cho từng chữ */
+.wave-text span:nth-child(1)  { animation-delay: 0s; }
+.wave-text span:nth-child(2)  { animation-delay: 0.05s; }
+.wave-text span:nth-child(3)  { animation-delay: 0.1s; }
+.wave-text span:nth-child(4)  { animation-delay: 0.15s; }
+.wave-text span:nth-child(5)  { animation-delay: 0.2s; }
+.wave-text span:nth-child(6)  { animation-delay: 0.25s; }
+.wave-text span:nth-child(7)  { animation-delay: 0.3s; }
+.wave-text span:nth-child(8)  { animation-delay: 0.35s; }
+.wave-text span:nth-child(9)  { animation-delay: 0.4s; }
+.wave-text span:nth-child(10) { animation-delay: 0.45s; }
+.wave-text span:nth-child(11) { animation-delay: 0.5s; }
+.wave-text span:nth-child(12) { animation-delay: 0.55s; }
+
+@keyframes letterWave {
   0% {
     transform: translateY(0);
     opacity: 0.6;
   }
   50% {
-    transform: translateY(-6px); /* nhô nhẹ lên */
+    transform: translateY(-6px); /* nhấp nhô nhẹ */
     opacity: 1;
   }
   100% {
@@ -568,7 +588,6 @@ body {
     opacity: 0.6;
   }
 }
-
 
 .svg-loader {
   width: 56px;
@@ -609,7 +628,14 @@ body {
       <svg class="svg-loader" viewBox="0 0 50 50">
         <circle cx="25" cy="25" r="20"></circle>
       </svg>
-      <div class="loading-text loading-bounce">Đang mở quà…</div>
+      <div class="loading-text wave-text">
+        <span>Đ</span><span>a</span><span>n</span><span>g</span>
+        <span>&nbsp;</span>
+        <span>m</span><span>ở</span>
+        <span>&nbsp;</span>
+        <span>q</span><span>u</span><span>à</span><span>…</span>
+      </div>
+
     </div>
 <!-- POPUP -->
 <div id="popupOverlay">
