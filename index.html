@@ -549,40 +549,42 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* container */
-.wave-text {
+.letter-step span {
   display: inline-block;
+  opacity: 0.6;
+  animation: letterStep 2.8s infinite;
 }
 
-/* từng chữ */
-.wave-text span {
-  display: inline-block;
-  animation: letterWave 1.4s ease-in-out infinite;
-}
+/* delay tăng dần → chạy từng chữ */
+.letter-step span:nth-child(1)  { animation-delay: 0s; }
+.letter-step span:nth-child(2)  { animation-delay: 0.2s; }
+.letter-step span:nth-child(3)  { animation-delay: 0.4s; }
+.letter-step span:nth-child(4)  { animation-delay: 0.6s; }
+.letter-step span:nth-child(5)  { animation-delay: 0.8s; }
+.letter-step span:nth-child(6)  { animation-delay: 1.0s; }
+.letter-step span:nth-child(7)  { animation-delay: 1.2s; }
+.letter-step span:nth-child(8)  { animation-delay: 1.4s; }
+.letter-step span:nth-child(9)  { animation-delay: 1.6s; }
+.letter-step span:nth-child(10) { animation-delay: 1.8s; }
+.letter-step span:nth-child(11) { animation-delay: 2.0s; }
+.letter-step span:nth-child(12) { animation-delay: 2.2s; }
 
-/* delay cho từng chữ */
-.wave-text span:nth-child(1)  { animation-delay: 0s; }
-.wave-text span:nth-child(2)  { animation-delay: 0.05s; }
-.wave-text span:nth-child(3)  { animation-delay: 0.1s; }
-.wave-text span:nth-child(4)  { animation-delay: 0.15s; }
-.wave-text span:nth-child(5)  { animation-delay: 0.2s; }
-.wave-text span:nth-child(6)  { animation-delay: 0.25s; }
-.wave-text span:nth-child(7)  { animation-delay: 0.3s; }
-.wave-text span:nth-child(8)  { animation-delay: 0.35s; }
-.wave-text span:nth-child(9)  { animation-delay: 0.4s; }
-.wave-text span:nth-child(10) { animation-delay: 0.45s; }
-.wave-text span:nth-child(11) { animation-delay: 0.5s; }
-.wave-text span:nth-child(12) { animation-delay: 0.55s; }
-
-@keyframes letterWave {
+@keyframes letterStep {
   0% {
     transform: translateY(0);
     opacity: 0.6;
   }
-  50% {
-    transform: translateY(-6px); /* nhấp nhô nhẹ */
+
+  10% {
+    transform: translateY(-6px); /* chữ NHÔ lên */
     opacity: 1;
   }
+
+  20% {
+    transform: translateY(0); /* chữ TỤT xuống */
+    opacity: 0.6;
+  }
+
   100% {
     transform: translateY(0);
     opacity: 0.6;
@@ -628,14 +630,13 @@ body {
       <svg class="svg-loader" viewBox="0 0 50 50">
         <circle cx="25" cy="25" r="20"></circle>
       </svg>
-      <div class="loading-text wave-text">
+      <div class="loading-text letter-step">
         <span>Đ</span><span>a</span><span>n</span><span>g</span>
         <span>&nbsp;</span>
         <span>m</span><span>ở</span>
         <span>&nbsp;</span>
         <span>q</span><span>u</span><span>à</span><span>…</span>
       </div>
-
     </div>
 <!-- POPUP -->
 <div id="popupOverlay">
