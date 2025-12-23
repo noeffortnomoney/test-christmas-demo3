@@ -525,6 +525,30 @@ body {
       top: 46%;
     transform: translateX(-50%) translateY(5px) rotate(0deg) !important;
   }
+  /* loading icon */
+.svg-loader {
+  width: 52px;
+  height: 52px;
+}
+
+.svg-loader circle {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 90,150;
+  stroke-dashoffset: 0;
+  animation: svgSpin 1.2s linear infinite;
+}
+
+@keyframes svgSpin {
+  to {
+    stroke-dashoffset: -240;
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+
 </style>
 </head>
   
@@ -548,6 +572,13 @@ body {
       playsinline
       preload="auto">
     </video>
+</div>
+  <!-- icon loading -->
+<div id="videoLoading" class="video-loading">
+  <svg class="svg-loader" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="20"></circle>
+  </svg>
+  <div class="loading-text">Đang tải...</div>
 </div>
 
 <script>
@@ -615,6 +646,8 @@ let autoCloseTimeout = null;
   
 const popupOverlay = document.getElementById("popupOverlay");
 const closeBtn = document.getElementById("closeBtn");
+
+const loading = document.getElementById("videoLoading");
   
 closeBtn.onclick = closePopup;
 
@@ -623,7 +656,7 @@ function openPopup(id) {
     clearTimeout(autoCloseTimeout);
     autoCloseTimeout = null;
   }
-
+  loading.style.display = "flex";
   const popupVideo = document.getElementById("popupVideo");
   const videoSrc = popupVideos[id];
   if (!popupVideo || !videoSrc) return;
@@ -639,6 +672,7 @@ function openPopup(id) {
 
   // ⏳ Chờ video sẵn sàng rồi mới show popup
   popupVideo.oncanplay = () => {
+    loading.style.display = "none";
     popupOverlay.style.display = "flex";
     popupVideo.play();
   };
