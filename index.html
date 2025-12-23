@@ -374,6 +374,15 @@ body {
   padding-top: 54%;
   font-size: 26px !important;
 }
+  .loading-text {
+    font-size: 60px !important;      /* 👈 to hơn, rất vừa iPad */
+  }
+
+  .loader-ring {
+    width: 80px !important;          /* nếu muốn loader to hơn cho cân */
+    height: 80px !important;
+    border-width: 20px !important;
+  }
 }
 /* =========================================================
    PC 1367px → 1919px
@@ -409,6 +418,15 @@ body {
   padding-top: 54%;
   font-size: 26px !important;
 }
+   .loading-text {
+    font-size: 70px !important;      /* 👈 to hơn, rất vừa iPad */
+  }
+
+  .loader-ring {
+    width: 90px !important;          /* nếu muốn loader to hơn cho cân */
+    height: 90px !important;
+    border-width: 25px !important;
+  }
 }
 /* =========================================================
    DESKTOP ≥ 1920px
@@ -447,6 +465,15 @@ body {
   padding-top: 54%;
   font-size: 26px !important;
 }
+   .loading-text {
+    font-size: 80px !important;      /* 👈 to hơn, rất vừa iPad */
+  }
+
+  .loader-ring {
+    width: 100px !important;          /* nếu muốn loader to hơn cho cân */
+    height: 100px !important;
+    border-width: 30px !important;
+  }
 }
 /* =========================================================
    VIDEO FIX CHUNG — ÁP DỤNG CHO TẤT CẢ ≥ 1024px
@@ -626,7 +653,7 @@ body {
     <div id="videoLoading" class="video-loading">
       <svg class="svg-loader" viewBox="0 0 50 50">
         <circle cx="25" cy="25" r="20"></circle>
-      </svg>
+      </svg> <span>  </span>
       <div class="loading-text letter-step">
         <span>  Đ</span><span>a</span><span>n</span><span>g  </span>
         <!-- <span class="space"></span> -->
