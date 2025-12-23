@@ -526,6 +526,27 @@ body {
     transform: translateX(-50%) translateY(5px) rotate(0deg) !important;
   }
   /* loading icon */
+
+.video-loading {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+
+  display: none;              /* mặc định ẩn */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;              /* CAO HƠN popup + video */
+  pointer-events: none;
+}
+
+.loading-text {
+  color: #fff;
+  margin-top: 12px;
+  font-size: 18px;
+}
+
 .svg-loader {
   width: 52px;
   height: 52px;
@@ -567,18 +588,19 @@ body {
   <div id="popupBox">
     <div id="closeBtn">✕</div>
 
+     <!-- LOADING -->
+    <div id="videoLoading" class="video-loading">
+      <svg class="svg-loader" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" r="20"></circle>
+      </svg>
+      <div class="loading-text">Đang tải...</div>
+    </div>
+    
     <video id="popupVideo"
       muted
       playsinline
       preload="auto">
     </video>
-</div>
-  <!-- icon loading -->
-<div id="videoLoading" class="video-loading">
-  <svg class="svg-loader" viewBox="0 0 50 50">
-    <circle cx="25" cy="25" r="20"></circle>
-  </svg>
-  <div class="loading-text">Đang tải...</div>
 </div>
 
 <script>
@@ -656,24 +678,23 @@ function openPopup(id) {
     clearTimeout(autoCloseTimeout);
     autoCloseTimeout = null;
   }
-  loading.style.display = "flex";
+
+  popupOverlay.style.display = "flex"; // ✅ HIỆN POPUP NGAY
+  loading.style.display = "flex";      // ✅ HIỆN LOADING
+
   const popupVideo = document.getElementById("popupVideo");
   const videoSrc = popupVideos[id];
   if (!popupVideo || !videoSrc) return;
 
-  // Reset video sạch
   popupVideo.pause();
   popupVideo.removeAttribute("src");
   popupVideo.load();
 
-  // Gán src mới
   popupVideo.src = videoSrc;
   popupVideo.currentTime = 0;
 
-  // ⏳ Chờ video sẵn sàng rồi mới show popup
   popupVideo.oncanplay = () => {
-    loading.style.display = "none";
-    popupOverlay.style.display = "flex";
+    loading.style.display = "none";    // ẨN LOADING
     popupVideo.play();
   };
 
@@ -681,6 +702,7 @@ function openPopup(id) {
 
   autoCloseTimeout = setTimeout(closePopup, 15000);
 }
+
 
 function closePopup() {
   popupOverlay.style.display = "none";
