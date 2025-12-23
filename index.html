@@ -543,10 +543,32 @@ body {
 
 
 .loading-text {
-  color: #fff;
-  margin-top: 12px;
+  color: #ffffff;
   font-size: 18px;
+  margin-top: 14px;
+  letter-spacing: 0.3px;
 }
+
+/* animation nhấp nhô nhẹ */
+.loading-bounce {
+  animation: textBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes textBounce {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-6px); /* nhô nhẹ lên */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+}
+
 
 .svg-loader {
   width: 56px;
@@ -587,7 +609,7 @@ body {
       <svg class="svg-loader" viewBox="0 0 50 50">
         <circle cx="25" cy="25" r="20"></circle>
       </svg>
-      <div class="loading-text">Đang bật mí phần quà…</div>
+      <div class="loading-text loading-bounce">Đang mở quà…</div>
     </div>
 <!-- POPUP -->
 <div id="popupOverlay">
